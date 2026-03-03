@@ -1,8 +1,10 @@
+
 <div align="center">
 
 # 🐍 MyApkTool - Super Edition (Python)
 
-**The Ultimate, Automated, and Most Comprehensive Android Reverse Engineering Toolkit**
+**أداة احترافية للهندسة العكسية لتطبيقات الأندرويد مع واجهة رسومية عصرية**
+*A professional Android APK reverse engineering desktop tool with a modern GUI and advanced automation features.*
 
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![GUI](https://img.shields.io/badge/GUI-CustomTkinter-2E3440?style=for-the-badge)](https://github.com/TomSchimansky/CustomTkinter)
@@ -12,108 +14,314 @@
 
 ---
 *A Masterpiece Developed by **Amr Khaled** in Collaboration with **Ali Sakkaf***
-*Python Edition | Out-of-the-Box Ready*
 </div>
 
-## 📖 Comprehensive Table of Contents
-1. [Introduction & Philosophy](#introduction)
-2. [Why Choose MyApkTool Super Edition?](#why-choose)
-3. [Deep-Dive: Core Features & Capabilities](#features)
-   - [A. The Dual-Decompilation Engine](#feat-engine)
-   - [B. Cryptography, Keystores & Signing](#feat-crypto)
-   - [C. DEX/Smali Bytecode Manipulation](#feat-dex)
-   - [D. Universal ADB Device Management](#feat-adb)
-4. [Prerequisites & System Requirements](#prerequisites)
-5. [Step-by-Step Installation Guide](#installation)
-6. [The Professional Workflow (How to Use)](#workflow)
-7. [Project Architecture & Directory Tree](#architecture)
-8. [Building a Standalone Executable (PyInstaller)](#build)
-9. [Troubleshooting & FAQ](#troubleshooting)
-10. [The Masterminds & Collaboration](#collaboration)
+<br>
+
+> ### 🔥 Looking for the Standalone C++ (Qt) Version?
+> هل تبحث عن نسخة تعمل كبرنامج تنفيذي مباشر (.exe) بدون الحاجة لتثبيت بايثون؟
+> تم تطوير نسخة شقيقة لهذا المشروع مبنية بالكامل بلغة **C++** وإطار عمل **Qt Framework** لتقدم أداءً خارقاً وسرعة قصوى من تطوير **Ali Sakkaf**.
+> 👉 **[Click Here to get MyApkTool-Pro (C++ Edition) by Ali Sakkaf](https://github.com/alisakkaf/MyApkTool-Pro)**
+
+---
+
+## 📖 Table of Contents (الفهرس)
+1. [Introduction (مقدمة)](#introduction)
+2. [Features & Modern GUI (المميزات)](#features)
+3. [Technical Details (التفاصيل التقنية)](#technical-details)
+4. [Project Structure (البنية والشجرة)](#structure)
+5. [Requirements (المتطلبات)](#requirements)
+6. [Installation & Setup (التثبيت)](#installation)
+7. [Usage & Workflow (الاستخدام)](#usage)
+8. [Converting to EXE (تحويل لملف تنفيذي)](#build)
+9. [Important Notes (ملاحظات)](#notes)
+10. [Troubleshooting (حل المشاكل)](#troubleshooting)
+11. [The Masterminds & Collaboration (فريق التطوير)](#collaboration)
 
 ---
 
 <a id="introduction"></a>
-## 🚀 1. Introduction & Philosophy
+## 🚀 1. Introduction (مقدمة)
 
-Welcome to **MyApkTool - Super Edition**, a meticulously crafted Python desktop application designed for professional Android developers, security researchers, malware analysts, and reverse engineers. 
+Welcome to **MyApkTool - Super Edition**, a Python desktop application designed for professional Android developers, malware analysts, and reverse engineers. It eliminates the friction of Command Line Interface (CLI) operations by wrapping the world's most powerful tools (`apktool`, `APKEditor`, `zipalign`, `apksigner`, `baksmali`, `adb`) into a stunning, responsive, and multi-threaded Graphical User Interface.
 
-Historically, reverse engineering Android applications required juggling multiple Command Line Interface (CLI) tools—typing lengthy commands, managing environment variables, and dealing with frozen terminals. **MyApkTool Super Edition** eliminates this friction entirely. By wrapping the world's most powerful Android CLI tools into a highly fluid, stunning, and modern Graphical User Interface (GUI) powered by `CustomTkinter`, we bring unprecedented efficiency to your workspace.
-
-This tool is **100% Out-of-the-Box Ready**. You do not need to hunt down external `.jar` binaries or configure complex system paths. Everything you need (`apktool`, `APKEditor`, `zipalign`, `apksigner`, `baksmali`, `adb`) is already bundled inside the repository!
-
----
-
-<a id="why-choose"></a>
-## 🎯 2. Why Choose MyApkTool Super Edition?
-
-* **Zero GUI Freezing:** Unlike poorly optimized scripts, MyApkTool features a highly advanced multi-threading manager (`managers.py`). Every heavy background task (decompiling 100MB+ APKs, signing, building) runs on isolated worker threads. Your UI remains perfectly smooth and responsive at all times.
-* **Intelligent Path Management:** Windows path limitations are a thing of the past. The tool handles spaces, special characters, and long directory names automatically without breaking Java subprocesses.
-* **Real-Time Rich Logging:** A built-in graphical console terminal that captures `stdout` and `stderr` live. It color-codes the output: 🟢 **Green** for Success, 🔴 **Red** for Errors, and 🟡 **Yellow** for Warnings, giving you instant visual feedback.
+**The best part? It's 100% Out-of-the-Box Ready.** This repository comes fully bundled with all necessary `.jar` binaries and `.exe` tools inside the `Resources/` and `tools/` directories. No manual downloading of background tools is required!
 
 ---
 
 <a id="features"></a>
-## ✨ 3. Deep-Dive: Core Features & Capabilities
+## ✨ 2. Features & Modern GUI (المميزات)
 
-<a id="feat-engine"></a>
-### A. The Dual-Decompilation Engine
-Not all APKs are created equal. Some use modern App Bundles, while others employ anti-decompilation tricks. MyApkTool gives you choices:
-* **Apktool Engine:** The industry standard. Perfect for deep resource extraction, translating `resources.arsc` to readable XML, and extracting `AndroidManifest.xml` flawlessly.
-* **APKEditor Engine:** Specifically optimized for raw speed and bypassing certain obfuscation methods that crash Apktool. 
-* **Framework Installer:** Working with Samsung, Xiaomi, or custom ROM system apps? Simply use the built-in Framework manager to install OEM `.apk` framework files so you can decompile proprietary applications without resource missing errors.
+### 🎯 Super Features
+* **Java Detector:** Automatic Java runtime detection with precise version display.
+* **Threading Engine:** Background processing ensures a smooth GUI without any freezing, even during heavy operations.
+* **Real-time Logger:** Color-coded terminal output embedded in the UI (🔴 Red: errors, 🟢 Green: success, 🟡 Yellow: warnings, ⚪ White: info).
+* **Auto-Signer:** Automatic APK signing using `apksigner` or `uber-apk-signer` immediately after a successful build.
+* **Smart Paths:** The tool is designed to handle Windows paths with spaces and special characters flawlessly.
+* **Drag & Drop:** Drop APK files directly into the application window to begin.
+* **Dual-Decompilation:** Switch intelligently between **Apktool** (for deep resource decoding) and **APKEditor** (for rapid bypass of obfuscation).
+* **Direct Baksmali/Smali & Split-APK Merger:** Modify `.dex` files directly or merge App Bundles into a single universal APK.
 
-<a id="feat-crypto"></a>
-### B. Cryptography, Keystores & Signing
-Modern Android (Android 11+) enforces strict cryptographic signatures.
-* **V1, V2, and V3 Signing Supported:** Automatically utilizes `apksigner.jar` or `uber-apk-signer.jar` to ensure your modified APKs install without parsing errors.
-* **Automated Signing Flow:** Check the "Auto-Sign" box before hitting Build. Once compilation is successful, the app instantly signs it and drops it in the `output/` folder.
-* **Visual Keystore Generator:** Stop typing `keytool` commands! Use the GUI to generate `.jks` (Java KeyStore) files. Fill out your Alias, Password, and Distinguished Names (CN, OU, O, L, ST, C) through clean text fields.
-* **Zipalign Engine:** Automatically aligns uncompressed data within the APK on 4-byte boundaries, significantly reducing RAM usage on the target Android device.
-
-<a id="feat-dex"></a>
-### C. DEX/Smali Bytecode Manipulation
-* **Direct Baksmali / Smali:** Skip the full decompilation! If you only need to modify logic, jump to the Baksmali tab. Disassemble a standalone `classes.dex` file into a Smali directory, edit the bytecode, and recompile it back to a `.dex` file with a single click.
-* **App Bundle / Split-APK Merger:** Extracted an app from your phone only to find it consists of `base.apk`, `config.xxhdpi.apk`, and `config.en.apk`? Use the Merge Tab. The tool will fuse all split components into a single, standalone, installable APK.
-* **Metadata Extractor:** Use the Info tab to execute `aapt dump badging` and extract package names, version codes, requested permissions, and launchable activities instantly.
-
-<a id="feat-adb"></a>
-### D. Universal ADB Device Management
-Manage your Android devices without touching the terminal.
-* **Auto-Discovery:** Automatically detects connected USB or Wi-Fi paired devices.
-* **Visual Package Manager:** View every installed app on your phone. Filter by system apps or user apps.
-* **One-Click Operations:** Pull (extract) APKs directly from the device to your PC workspace. Push (install) modified APKs from your PC directly to the device. Uninstall packages instantly.
+### 🎨 Modern GUI
+* Dark theme with modern aesthetics powered by `CustomTkinter`.
+* Responsive design with a resizable, frameless-styled window.
+* Progress bar with real-time dynamic updates.
+* Activity log with accurate timestamps.
 
 ---
 
-<a id="prerequisites"></a>
-## ⚙️ 4. Prerequisites & System Requirements
+<a id="technical-details"></a>
+## 📝 3. Technical Details (التفاصيل التقنية)
 
-Because we have bundled the core binary tools, you only need to prepare your base operating system environment:
+The architecture of this tool is strictly modular, verifying environments before executing commands.
 
-### Step 1: Python Installation
-The application UI and logic are powered by Python.
-* **Requirement:** Python 3.10, 3.11, or 3.12 (Make sure to check "Add Python to PATH" during installation).
-* **Download:** [Python Official Site](https://www.python.org/downloads/)
+### Internal Architecture Models
+* **LibraryChecker:** Validates all Python dependencies upon startup.
+* **JavaDetector:** Checks the system's `JAVA_HOME` and tests the installation.
+* **PathManager:** Smart path handling for Windows directories.
+* **APKOperations:** Core underlying logic for decompiling, building, and signing.
+* **MyApkToolGUI:** The frontend CustomTkinter-based interface.
 
-### Step 2: Java Runtime Environment (JDK)
-Java is strictly necessary because `apktool`, `apksigner`, and `APKEditor` are `.jar` (Java Archive) applications.
-* **Requirement:** Any modern JDK version (JDK 8, 17, 21, or 25).
-* **Verify:** Open CMD and type `java -version`.
-* **Official Downloads:**
-  * 🔗 [Java 21 (LTS)](https://www.oracle.com/java/technologies/downloads/#java21)
-  * 🔗 [Java 25](https://www.oracle.com/java/technologies/downloads/#java25)
-  * 🔗 [Java 9 Archive](https://www.oracle.com/java/technologies/javase/javase9-archive-downloads.html)
+### Threading Model
+All long operations run in background threads to preserve user experience:
+* **Main thread:** Handles GUI updates and user interactions exclusively.
+* **Worker threads:** Executes Java subprocesses (`apktool`, `zipalign`, etc.).
+* **Queue-based callbacks:** Ensures thread-safe communication between background tasks and the UI.
+
+---
+
+<a id="structure"></a>
+## 📁 4. Project Structure (البنية والشجرة)
+
+Here is the exact layout of the repository, highlighting the rich GUI modularity and the pre-bundled tools:
+
+```text
+MyApkTool/
+├── main.py                     # Main application entry point
+├── main.spec                   # PyInstaller configuration file
+├── requirements.txt            # Python dependencies
+├── README.md                   # This documentation
+├── config.py                   # Global configuration and path handlers
+├── managers.py                 # Advanced threading and queue managers
+├── dialogs.py                  # Custom popup and prompt dialogs
+├── adb_manager.py              # ADB operations wrapper
+├── gui/                        # Modular Interface Package
+│   ├── __init__.py
+│   ├── app.py                  # Main Window UI
+│   ├── tab_decompile.py        # Decompilation interface
+│   ├── tab_compile.py          # Compilation interface
+│   ├── tab_sign.py             # Signing & Zipalign interface
+│   ├── tab_merge.py            # Split-APK merger interface
+│   ├── tab_baksmali.py         # DEX/Smali conversion interface
+│   ├── tab_adb.py              # Device management interface
+│   ├── tab_info.py             # APK metadata extraction interface
+│   ├── tab_settings.py         # App settings & preferences
+│   └── dialog_keystore.py      # .jks Keystore generator interface
+├── Resources/                  # Pre-Bundled Core Engines & Assets
+│   ├── APKEditor.jar, apktool.jar, baksmali.jar, smali.jar, apksigner.jar
+│   ├── aapt.exe, aapt2.exe, adb.exe, zipalign.exe
+│   ├── testkey.pk8, testkey.x509.pem
+│   ├── AdbWinApi.dll, AdbWinUsbApi.dll, libwinpthread-1.dll
+│   └── icon.ico, icon.png, splash.png
+├── tools/                      # Additional Platform Tools
+│   ├── custom/
+│   ├── platform-tools/         # fastboot, sqlite3, mke2fs, etc.
+│   └── uber-apk-signer.jar, APKEditor.jar
+├── workspace/                  # Auto-created folder for decompiled files
+├── output/backups/             # Auto-created folder for signed APKs
+├── framework/                  # Extracted OEM framework resources
+├── keys/                       # User-generated Keystore files
+├── logs/                       # Activity log text files
+└── __pycache__/                # Python compiled bytecode
+
+```
+
+---
+
+<a id="requirements"></a>
+
+## 📋 5. Requirements (المتطلبات)
+
+### 1. Python Environment
+
+* Python 3.10 or higher.
+* Download from: [python.org/downloads](https://www.python.org/downloads/)
+
+### 2. Java JDK
+
+Required for `apktool.jar` and signing operations.
+
+* 🔗 [Java 21 (LTS)](https://www.oracle.com/java/technologies/downloads/#java21)
+* 🔗 [Java 25](https://www.oracle.com/java/technologies/downloads/#java25)
+* 🔗 [Java 9 Archive](https://www.oracle.com/java/technologies/javase/javase9-archive-downloads.html)
+
+### 3. Python Libraries
+
+Installed via:
+
+```bash
+pip install -r requirements.txt
+
+```
+
+*(Or manually: `pip install customtkinter Pillow tkinterdnd2`)*
 
 ---
 
 <a id="installation"></a>
-## 🛠️ 5. Step-by-Step Installation Guide
 
-Setting up MyApkTool Super Edition takes less than two minutes.
+## 🚀 6. Installation & Setup (التثبيت)
 
-**1. Clone the Source Code**
-Open your terminal (CMD, PowerShell, or Git Bash) and run:
+**Step 1: Clone the Repository**
+
 ```bash
 git clone [https://github.com/AmrKhaled-Tech/ApkTool-Pro.git](https://github.com/AmrKhaled-Tech/ApkTool-Pro.git)
 cd ApkTool-Pro
+
+```
+
+**Step 2: Install Python Libraries**
+
+```bash
+pip install -r requirements.txt
+
+```
+
+**Step 3: Verify Java Installation**
+Open your terminal and type:
+
+```bash
+java -version
+
+```
+
+*If Java is not installed, download and install the Java JDK from the links provided above.*
+
+*(Note: Unlike the old version, you **do not** need to download `apktool.jar` or `uber-apk-signer.jar` manually. They are already included in the `Resources/` and `tools/` folders!)*
+
+---
+
+<a id="usage"></a>
+
+## 🎮 7. Usage & Workflow (الاستخدام)
+
+**Running the Application:**
+
+```bash
+python main.py
+
+```
+
+**The Standard Workflow:**
+
+1. **Startup Checks:** The application automatically verifies Java installation, required tools, and Python libraries.
+2. **Select APK:** Click "Browse" or drag & drop an APK file into the UI.
+3. **Decompile:** Click **"📦 Decompile"** to extract APK contents to the `workspace/` folder.
+4. **✏️ Edit Files:** Modify the decompiled XML/Smali files using your code editor.
+5. **Build:** Go to the Compile tab and click **"🔨 Build"** to recompile the APK.
+6. **Auto-Sign:** If enabled, signing happens automatically after the build completes using `uber-apk-signer`.
+7. **✅ Done:** Find your ready-to-install, signed APK in the `output/` folder.
+
+---
+
+<a id="build"></a>
+
+## 🔨 8. Converting to EXE (تحويل لملف تنفيذي)
+
+To create a standalone `.exe` file without needing users to install Python:
+
+**1. Install PyInstaller**
+
+```bash
+pip install pyinstaller
+
+```
+
+**2. Build EXE**
+We must include the bundled directories (`tools` and `Resources`) so the binary works properly:
+
+```bash
+pyinstaller --onefile --windowed --add-data "tools;tools" --add-data "Resources;Resources" --icon="Resources/icon.ico" --name "MyApkTool" main.py
+
+```
+
+* `--onefile`: Create a single `.exe` file.
+* `--windowed`: No console window (hide background CMD).
+* `--add-data`: Include the necessary external tool folders.
+
+**After Building:** Find your executable in the `dist/` folder.
+
+
+<a id="notes"></a>
+
+## 📌 9. Important Notes (ملاحظات)
+
+**ملاحظات مهمة (Arabic):**
+
+* جميع أدوات الهندسة العكسية تم دمجها مسبقاً في مجلدي `Resources` و `tools`.
+* يتطلب البرنامج تثبيت Java JDK لكي يعمل بشكل صحيح.
+* عملية توقيع التطبيقات (Signing) تتم تلقائياً بعد نجاح البناء.
+* جميع العمليات تعمل في الخلفية بفضل نظام `Threading` المتطور دون تجميد الواجهة.
+* البرنامج يدعم بالكامل السحب والإفلات للملفات لتسهيل العمل.
+
+**Important Notes (English):**
+
+* Core tools are already pre-bundled inside `Resources` and `tools` directories.
+* Requires Java JDK installed on your system to function.
+* Auto-signing executes immediately after a successful build.
+* All heavy operations run in the background via threading (no GUI freeze).
+* Drag & drop support is fully implemented across the application.
+
+<a id="troubleshooting"></a>
+
+## 🐛 10. Troubleshooting (حل المشاكل)
+
+* **Libraries Not Found (Missing customtkinter, Pillow, tkinterdnd2):**
+* *Solution:* Run `pip install -r requirements.txt`
+
+
+* **Java Not Found:**
+* *Solution:* Install Java JDK from oracle.com and ensure `JAVA_HOME` is set in Windows.
+
+
+* **Path Errors:**
+* *Solution:* While the tool automatically handles paths with spaces, if you still get errors, avoid special/foreign characters in your Windows folder names and use English characters.
+
+
+<a id="collaboration"></a>
+
+## 🤝 11. The Masterminds & Collaboration (فريق التطوير)
+
+This toolkit is the result of powerful collaboration, offering solutions across different programming languages to fit every developer's needs.
+
+<table>
+<tr>
+<td align="center">
+<h3>🐍 The Python Architect</h3>
+<img src="https://www.google.com/search?q=https://github.com/AmrKhaled-Tech.png" width="100px;" alt="Amr Khaled"/><br />
+<b>Amr Khaled</b><i>Creator of the Python / CustomTkinter Edition</i>
+
+<a href="https://www.google.com/search?q=https://github.com/AmrKhaled-Tech">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/GitHub-Profile-181717%3Fstyle%3Dfor-the-badge%26logo%3Dgithub"/>
+</a>
+<p>Amr designed this incredibly smooth, multi-threaded Python edition. He focused on building an accessible, highly customizable, and automated Out-of-the-Box experience using CustomTkinter.</p>
+</td>
+<td align="center">
+<h3>⚙️ The C++ & Qt Mastermind</h3>
+<img src="https://www.google.com/search?q=https://github.com/alisakkaf.png" width="100px;" alt="Ali Sakkaf"/><br />
+<b>Ali Sakkaf</b><i>Creator of the C++ / Qt Pro Edition</i>
+
+<a href="https://www.google.com/search?q=https://github.com/alisakkaf">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/GitHub-Profile-181717%3Fstyle%3Dfor-the-badge%26logo%3Dgithub"/>
+</a><a href="https://mysterious-dev.com/">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Website-mysterious--dev.com-00599C%3Fstyle%3Dfor-the-badge%26logo%3Dweb"/>
+</a>
+<p>Ali developed the ultra-high-performance <b>MyApkTool Pro</b> built entirely in C++ and Qt Framework, offering natively compiled, blazing-fast execution and true standalone portability.</p>
+</td>
+</tr>
+</table>
+
+### 🙏 Special Credits
+* **[Apktool](https://ibotpeaches.github.io/Apktool/):** by iBotPeaches
+* **[Uber-APK-Signer](https://github.com/patrickfav/uber-apk-signer):** by patrickfav
+* **[CustomTkinter](https://github.com/TomSchimansky/CustomTkinter):** by TomSchimansky
