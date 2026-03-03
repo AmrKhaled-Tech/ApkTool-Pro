@@ -292,31 +292,34 @@ pyinstaller --onefile --windowed --add-data "tools;tools" --add-data "Resources;
 
 ## 🤝 11. The Masterminds & Collaboration (فريق التطوير)
 
-This toolkit is the result of powerful collaboration, offering solutions across different programming languages to fit every developer's needs.
-
 <table>
 <tr>
-<td align="center">
+<td align="center" width="50%">
 <h3>🐍 The Python Architect</h3>
-<img src="https://www.google.com/search?q=https://github.com/AmrKhaled-Tech.png" width="100px;" alt="Amr Khaled"/><br />
-<b>Amr Khaled</b><i>Creator of the Python / CustomTkinter Edition</i>
-
-<a href="https://www.google.com/search?q=https://github.com/AmrKhaled-Tech">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/GitHub-Profile-181717%3Fstyle%3Dfor-the-badge%26logo%3Dgithub"/>
+<img src="https://avatars.githubusercontent.com/u/189408708?v=4" width="150px;" alt="Amr Khaled"/><br/>
+<b>Amr Khaled</b><br/>
+<sub>Creator of the Python/CustomTkinter Edition</sub>
+<br/><br/>
+<a href="https://github.com/AmrKhaled-Tech">
+<img src="https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github"/>
 </a>
-<p>Amr designed this incredibly smooth, multi-threaded Python edition. He focused on building an accessible, highly customizable, and automated Out-of-the-Box experience using CustomTkinter.</p>
+<br/><br/>
+<p>Amr designed this smooth, multi-threaded Python edition with focus on accessibility and automation using CustomTkinter.</p>
 </td>
-<td align="center">
-<h3>⚙️ The C++ & Qt Mastermind</h3>
-<img src="https://www.google.com/search?q=https://github.com/alisakkaf.png" width="100px;" alt="Ali Sakkaf"/><br />
-<b>Ali Sakkaf</b><i>Creator of the C++ / Qt Pro Edition</i>
-
-<a href="https://www.google.com/search?q=https://github.com/alisakkaf">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/GitHub-Profile-181717%3Fstyle%3Dfor-the-badge%26logo%3Dgithub"/>
-</a><a href="https://mysterious-dev.com/">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/Website-mysterious--dev.com-00599C%3Fstyle%3Dfor-the-badge%26logo%3Dweb"/>
+<td align="center" width="50%">
+<h3>⚙️ The C++ Mastermind</h3>
+<img src="https://avatars.githubusercontent.com/u/111093345?v=4" width="150px;" alt="Ali Sakkaf"/><br/>
+<b>Ali Sakkaf</b><br/>
+<sub>Creator of the C++/Qt Pro Edition</sub>
+<br/><br/>
+<a href="https://github.com/alisakkaf">
+<img src="https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github"/>
 </a>
-<p>Ali developed the ultra-high-performance <b>MyApkTool Pro</b> built entirely in C++ and Qt Framework, offering natively compiled, blazing-fast execution and true standalone portability.</p>
+<a href="https://mysterious-dev.com/">
+<img src="https://img.shields.io/badge/Website-mysterious--dev.com-00599C?style=for-the-badge&logo=web"/>
+</a>
+<br/><br/>
+<p>Ali developed the ultra-high-performance <b>MyApkTool Pro</b> in C++ and Qt Framework for blazing-fast execution.</p>
 </td>
 </tr>
 </table>
@@ -325,3 +328,4 @@ This toolkit is the result of powerful collaboration, offering solutions across 
 * **[Apktool](https://ibotpeaches.github.io/Apktool/):** by iBotPeaches
 * **[Uber-APK-Signer](https://github.com/patrickfav/uber-apk-signer):** by patrickfav
 * **[CustomTkinter](https://github.com/TomSchimansky/CustomTkinter):** by TomSchimansky
+
