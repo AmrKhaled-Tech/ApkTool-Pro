@@ -1,266 +1,119 @@
-# 🔧 MyApkTool - Super Edition
+<div align="center">
 
-<div dir="rtl">
+# 🐍 MyApkTool - Super Edition (Python)
 
-أداة احترافية للهندسة العكسية لتطبيقات الأندرويد مع واجهة رسومية عصرية
+**The Ultimate, Automated, and Most Comprehensive Android Reverse Engineering Toolkit**
 
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![GUI](https://img.shields.io/badge/GUI-CustomTkinter-2E3440?style=for-the-badge)](https://github.com/TomSchimansky/CustomTkinter)
+[![Platform](https://img.shields.io/badge/Platform-Windows-0078D7?style=for-the-badge&logo=windows)](https://www.microsoft.com/windows)
+[![Architecture](https://img.shields.io/badge/Architecture-Multi--Threaded-FF6F00?style=for-the-badge&logo=opslevel)](https://docs.python.org/3/library/threading.html)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+
+---
+*A Masterpiece Developed by **Amr Khaled** in Collaboration with **Ali Sakkaf***
+*Python Edition | Out-of-the-Box Ready*
 </div>
 
-A professional Android APK reverse engineering desktop tool with modern GUI and advanced automation features.
+## 📖 Comprehensive Table of Contents
+1. [Introduction & Philosophy](#introduction)
+2. [Why Choose MyApkTool Super Edition?](#why-choose)
+3. [Deep-Dive: Core Features & Capabilities](#features)
+   - [A. The Dual-Decompilation Engine](#feat-engine)
+   - [B. Cryptography, Keystores & Signing](#feat-crypto)
+   - [C. DEX/Smali Bytecode Manipulation](#feat-dex)
+   - [D. Universal ADB Device Management](#feat-adb)
+4. [Prerequisites & System Requirements](#prerequisites)
+5. [Step-by-Step Installation Guide](#installation)
+6. [The Professional Workflow (How to Use)](#workflow)
+7. [Project Architecture & Directory Tree](#architecture)
+8. [Building a Standalone Executable (PyInstaller)](#build)
+9. [Troubleshooting & FAQ](#troubleshooting)
+10. [The Masterminds & Collaboration](#collaboration)
 
 ---
 
-## ✨ Features (المميزات)
+<a id="introduction"></a>
+## 🚀 1. Introduction & Philosophy
 
-### 🎯 Super Features
-- **Java Detector**: Automatic Java runtime detection with version display
-- **Threading Engine**: Background processing with smooth GUI (no freezing)
-- **Real-time Logger**: Color-coded output (Red: errors, Green: success, Yellow: warnings)
-- **Auto-Signer**: Automatic APK signing after successful build
-- **Smart Paths**: Handles Windows paths with spaces correctly
-- **Drag & Drop**: Drop APK files directly into the application
+Welcome to **MyApkTool - Super Edition**, a meticulously crafted Python desktop application designed for professional Android developers, security researchers, malware analysts, and reverse engineers. 
 
-### 🎨 Modern GUI
-- Dark theme with modern aesthetics (CustomTkinter)
-- Responsive design with resizable window
-- Progress bar with real-time updates
-- Activity log with timestamps
+Historically, reverse engineering Android applications required juggling multiple Command Line Interface (CLI) tools—typing lengthy commands, managing environment variables, and dealing with frozen terminals. **MyApkTool Super Edition** eliminates this friction entirely. By wrapping the world's most powerful Android CLI tools into a highly fluid, stunning, and modern Graphical User Interface (GUI) powered by `CustomTkinter`, we bring unprecedented efficiency to your workspace.
+
+This tool is **100% Out-of-the-Box Ready**. You do not need to hunt down external `.jar` binaries or configure complex system paths. Everything you need (`apktool`, `APKEditor`, `zipalign`, `apksigner`, `baksmali`, `adb`) is already bundled inside the repository!
 
 ---
 
-## 📋 Requirements (المتطلبات)
+<a id="why-choose"></a>
+## 🎯 2. Why Choose MyApkTool Super Edition?
 
-### 1. Python
-- Python 3.10 or higher
-- Download from: https://www.python.org/downloads/
+* **Zero GUI Freezing:** Unlike poorly optimized scripts, MyApkTool features a highly advanced multi-threading manager (`managers.py`). Every heavy background task (decompiling 100MB+ APKs, signing, building) runs on isolated worker threads. Your UI remains perfectly smooth and responsive at all times.
+* **Intelligent Path Management:** Windows path limitations are a thing of the past. The tool handles spaces, special characters, and long directory names automatically without breaking Java subprocesses.
+* **Real-Time Rich Logging:** A built-in graphical console terminal that captures `stdout` and `stderr` live. It color-codes the output: 🟢 **Green** for Success, 🔴 **Red** for Errors, and 🟡 **Yellow** for Warnings, giving you instant visual feedback.
 
-### 2. Java JDK
-- Required for apktool operations
-- Download from: https://www.oracle.com/java/technologies/downloads/
+---
 
-### 3. Python Libraries
-Install using pip:
+<a id="features"></a>
+## ✨ 3. Deep-Dive: Core Features & Capabilities
+
+<a id="feat-engine"></a>
+### A. The Dual-Decompilation Engine
+Not all APKs are created equal. Some use modern App Bundles, while others employ anti-decompilation tricks. MyApkTool gives you choices:
+* **Apktool Engine:** The industry standard. Perfect for deep resource extraction, translating `resources.arsc` to readable XML, and extracting `AndroidManifest.xml` flawlessly.
+* **APKEditor Engine:** Specifically optimized for raw speed and bypassing certain obfuscation methods that crash Apktool. 
+* **Framework Installer:** Working with Samsung, Xiaomi, or custom ROM system apps? Simply use the built-in Framework manager to install OEM `.apk` framework files so you can decompile proprietary applications without resource missing errors.
+
+<a id="feat-crypto"></a>
+### B. Cryptography, Keystores & Signing
+Modern Android (Android 11+) enforces strict cryptographic signatures.
+* **V1, V2, and V3 Signing Supported:** Automatically utilizes `apksigner.jar` or `uber-apk-signer.jar` to ensure your modified APKs install without parsing errors.
+* **Automated Signing Flow:** Check the "Auto-Sign" box before hitting Build. Once compilation is successful, the app instantly signs it and drops it in the `output/` folder.
+* **Visual Keystore Generator:** Stop typing `keytool` commands! Use the GUI to generate `.jks` (Java KeyStore) files. Fill out your Alias, Password, and Distinguished Names (CN, OU, O, L, ST, C) through clean text fields.
+* **Zipalign Engine:** Automatically aligns uncompressed data within the APK on 4-byte boundaries, significantly reducing RAM usage on the target Android device.
+
+<a id="feat-dex"></a>
+### C. DEX/Smali Bytecode Manipulation
+* **Direct Baksmali / Smali:** Skip the full decompilation! If you only need to modify logic, jump to the Baksmali tab. Disassemble a standalone `classes.dex` file into a Smali directory, edit the bytecode, and recompile it back to a `.dex` file with a single click.
+* **App Bundle / Split-APK Merger:** Extracted an app from your phone only to find it consists of `base.apk`, `config.xxhdpi.apk`, and `config.en.apk`? Use the Merge Tab. The tool will fuse all split components into a single, standalone, installable APK.
+* **Metadata Extractor:** Use the Info tab to execute `aapt dump badging` and extract package names, version codes, requested permissions, and launchable activities instantly.
+
+<a id="feat-adb"></a>
+### D. Universal ADB Device Management
+Manage your Android devices without touching the terminal.
+* **Auto-Discovery:** Automatically detects connected USB or Wi-Fi paired devices.
+* **Visual Package Manager:** View every installed app on your phone. Filter by system apps or user apps.
+* **One-Click Operations:** Pull (extract) APKs directly from the device to your PC workspace. Push (install) modified APKs from your PC directly to the device. Uninstall packages instantly.
+
+---
+
+<a id="prerequisites"></a>
+## ⚙️ 4. Prerequisites & System Requirements
+
+Because we have bundled the core binary tools, you only need to prepare your base operating system environment:
+
+### Step 1: Python Installation
+The application UI and logic are powered by Python.
+* **Requirement:** Python 3.10, 3.11, or 3.12 (Make sure to check "Add Python to PATH" during installation).
+* **Download:** [Python Official Site](https://www.python.org/downloads/)
+
+### Step 2: Java Runtime Environment (JDK)
+Java is strictly necessary because `apktool`, `apksigner`, and `APKEditor` are `.jar` (Java Archive) applications.
+* **Requirement:** Any modern JDK version (JDK 8, 17, 21, or 25).
+* **Verify:** Open CMD and type `java -version`.
+* **Official Downloads:**
+  * 🔗 [Java 21 (LTS)](https://www.oracle.com/java/technologies/downloads/#java21)
+  * 🔗 [Java 25](https://www.oracle.com/java/technologies/downloads/#java25)
+  * 🔗 [Java 9 Archive](https://www.oracle.com/java/technologies/javase/javase9-archive-downloads.html)
+
+---
+
+<a id="installation"></a>
+## 🛠️ 5. Step-by-Step Installation Guide
+
+Setting up MyApkTool Super Edition takes less than two minutes.
+
+**1. Clone the Source Code**
+Open your terminal (CMD, PowerShell, or Git Bash) and run:
 ```bash
-pip install -r requirements.txt
-```
-
-Or manually:
-```bash
-pip install customtkinter Pillow tkinterdnd2
-```
-
-### 4. APK Tools
-**IMPORTANT**: You must download these tools manually and place them in the `tools/` folder:
-
-1. **apktool.jar**
-   - Download from: https://ibotpeaches.github.io/Apktool/
-   - Place in: `MyApkTool/tools/apktool.jar`
-
-2. **uber-apk-signer.jar**
-   - Download from: https://github.com/patrickfav/uber-apk-signer/releases
-   - Place in: `MyApkTool/tools/uber-apk-signer.jar`
-
----
-
-## 📁 Project Structure (البنية)
-
-```
-MyApkTool/
-├── main.py                 # Main application
-├── requirements.txt        # Python dependencies
-├── README.md              # This file
-├── tools/                 # ⚠️ Place Java tools here
-│   ├── apktool.jar       # Download manually
-│   └── uber-apk-signer.jar  # Download manually
-├── workspace/            # Decompiled APK files (auto-created)
-└── output/               # Signed APK output (auto-created)
-```
-
----
-
-## 🚀 Installation & Setup (التثبيت)
-
-### Step 1: Install Python Libraries
-```bash
-cd MyApkTool
-pip install -r requirements.txt
-```
-
-### Step 2: Download Java Tools
-1. Download `apktool.jar` and place in `tools/` folder
-2. Download `uber-apk-signer.jar` and place in `tools/` folder
-
-### Step 3: Verify Java Installation
-```bash
-java -version
-```
-If Java is not installed, download and install Java JDK.
-
----
-
-## 🎮 Usage (الاستخدام)
-
-### Running the Application
-```bash
-python main.py
-```
-
-### Workflow
-1. **Select APK**: Click "Browse" or drag & drop APK file
-2. **Decompile**: Click "📦 Decompile" to extract APK contents
-3. ✏️ **Edit Files**: Modify the decompiled files in `workspace/` folder
-4. **Build**: Click "🔨 Build" to recompile APK
-5. **Auto-Sign**: Signing happens automatically after build
-6. ✅ **Done**: Find signed APK in `output/` folder
-
-### Features in Action
-
-#### Startup Checks
-The application automatically verifies:
-- ✓ Java installation
-- ✓ Required tools (apktool.jar, uber-apk-signer.jar)
-- ✓ Python libraries
-
-#### Real-time Logging
-- 🔴 **Red**: Errors and failures
-- 🟢 **Green**: Success messages
-- 🟡 **Yellow**: Warnings
-- ⚪ **White**: Info messages
-
-#### Auto-Signing
-After successful build, the tool automatically:
-1. Detects the built APK
-2. Runs uber-apk-signer
-3. Saves signed APK to `output/` folder
-4. Displays completion message
-
----
-
-## 🔨 Converting to EXE (تحويل لملف تنفيذي)
-
-To create a standalone .exe file:
-
-### Install PyInstaller
-```bash
-pip install pyinstaller
-```
-
-### Build EXE
-```bash
-pyinstaller --onefile --windowed --add-data "tools;tools" --name "MyApkTool" main.py
-```
-
-### Options Explained
-- `--onefile`: Create single .exe file
-- `--windowed`: No console window
-- `--add-data "tools;tools"`: Include tools folder
-- `--name "MyApkTool"`: Output name
-
-### After Building
-1. Find EXE in `dist/` folder
-2. Copy `tools/` folder next to the .exe
-3. Distribute both together
-
----
-
-## 🐛 Troubleshooting (حل المشاكل)
-
-### Libraries Not Found
-```
-Missing: customtkinter, Pillow, tkinterdnd2
-Solution: pip install -r requirements.txt
-```
-
-### Java Not Found
-```
-Java not installed
-Solution: Install Java JDK from oracle.com
-```
-
-### Tools Not Found
-```
-apktool.jar not found in tools folder
-Solution: Download and place in tools/ folder
-```
-
-### Path Errors
-The tool automatically handles paths with spaces. If you still get errors:
-- Avoid special characters in file names
-- Use English characters in paths
-
----
-
-## 📝 Technical Details (التفاصيل التقنية)
-
-### Architecture
-- **LibraryChecker**: Validates Python dependencies
-- **JavaDetector**: Checks Java installation
-- **PathManager**: Smart path handling for Windows
-- **APKOperations**: Core decompile/build/sign logic
-- **MyApkToolGUI**: CustomTkinter-based interface
-
-### Threading Model
-All long operations run in background threads:
-- Main thread: GUI updates only
-- Worker threads: Java subprocess execution
-- Queue-based callbacks: Thread-safe communication
-
-### Path Handling
-- Supports paths with spaces
-- Automatic quoting when needed
-- PyInstaller-compatible relative paths
-- Works in both script and .exe modes
-
----
-
-## 📌 Notes (ملاحظات)
-
-<div dir="rtl">
-
-### ملاحظات مهمة
-1. يجب تحميل ملفات الأدوات يدوياً (apktool.jar و uber-apk-signer.jar)
-2. يتطلب Java JDK للعمل
-3. التوقيع يتم تلقائياً بعد البناء
-4. جميع العمليات تعمل في الخلفية دون تجميد الواجهة
-5. يدعم السحب والإفلات للملفات
-
-</div>
-
-### Important Notes (English)
-1. Tools must be downloaded manually (apktool.jar & uber-apk-signer.jar)
-2. Requires Java JDK to function
-3. Auto-signing after successful build
-4. All operations run in background (no GUI freeze)
-5. Drag & drop support included
-
----
-
-## 📄 License
-
-Free to use for educational and personal purposes.
-
----
-
-## 🙏 Credits
-
-- **apktool**: https://ibotpeaches.github.io/Apktool/
-- **uber-apk-signer**: https://github.com/patrickfav/uber-apk-signer
-- **CustomTkinter**: https://github.com/TomSchimansky/CustomTkinter
-
----
-
-<div dir="rtl">
-
-## 💡 نصائح للاستخدام
-
-1. **قبل البدء**: تأكد من تثبيت Java و Python
-2. **التحميل**: ضع ملفات الأدوات في مجلد tools
-3. **التشغيل**: قم بتشغيل main.py
-4. **التعديل**: بعد فك التطبيق، عدل الملفات في workspace
-5. **البناء**: اضغط Build وسيتم التوقيع تلقائياً
-
-</div>
-
----
-
-**Made with ❤️ for Android Developers**
+git clone [https://github.com/AmrKhaled-Tech/ApkTool-Pro.git](https://github.com/AmrKhaled-Tech/ApkTool-Pro.git)
+cd ApkTool-Pro
